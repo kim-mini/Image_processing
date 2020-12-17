@@ -180,12 +180,7 @@ if __name__ =='__main__':
             else:
                 break
 
-        # txtW = ''
-        # for axis in SaveTxtList[idx][0]:
-        #     txtW = txtW + str(axis) + ' '
-        # #print(txtW)
-
-        f = open(Savepath2,'w')
+        # f = open(Savepath2,'w')
         # f.writelines(' '.join(map(str, cvFormattoYolo(i, saveimg.shape[0], saveimg.shape[1]))) + '\n')
         # f.close()
         with open(Savepath2, 'a') as fout:

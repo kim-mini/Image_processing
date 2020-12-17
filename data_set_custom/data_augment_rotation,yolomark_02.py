@@ -31,10 +31,10 @@ def cvFormattoYolo(corner, H, W):
 
 class yoloRotatebbox:
     def __init__(self, filename, image_ext, angle):
-        # assert 보증하다다 : 예외 처리할 때 쓰인다
-        # isfile이 아닐경울 error를 발생한
-        assert os.path.isfile(filename + image_ext)
-        assert os.path.isfile(filename + '.txt')
+        # assert 보증하다 : 예외 처리할 때 쓰인다
+        # isfile이 아닐경 error를 발생한
+        #assert os.path.isfile(filename + image_ext)
+        #assert os.path.isfile(filename + '.txt')
 
         # 파일 이름
         self.filename = filename
@@ -135,29 +135,46 @@ class yoloRotatebbox:
 
 def SaveFileName(cnt):
     if cnt < 10:
+        NameI = ClassName + '_0000{}.jpg'.format(cnt)
+        Savepath = os.path.join(SaveDir, NameI)
+
+        NameF = ClassName + '_0000{}.txt'.format(cnt)
+        Savepath2 = os.path.join(SaveDir, NameF)
+
+    if cnt < 100:
+        NameI = ClassName + '_000{}.jpg'.format(cnt)
+        Savepath = os.path.join(SaveDir, NameI)
+
+        NameF = ClassName + '_000{}.txt'.format(cnt)
+        Savepath2 = os.path.join(SaveDir, NameF)
+
+    if cnt < 1000:
         NameI = ClassName + '_00{}.jpg'.format(cnt)
         Savepath = os.path.join(SaveDir, NameI)
 
         NameF = ClassName + '_00{}.txt'.format(cnt)
         Savepath2 = os.path.join(SaveDir, NameF)
-    if cnt >= 10:
+
+    if cnt < 10000:
         NameI = ClassName + '_0{}.jpg'.format(cnt)
         Savepath = os.path.join(SaveDir, NameI)
 
         NameF = ClassName + '_0{}.txt'.format(cnt)
         Savepath2 = os.path.join(SaveDir, NameF)
-    if cnt >= 100:
+
+    if cnt < 100000:
         NameI = ClassName + '_{}.jpg'.format(cnt)
         Savepath = os.path.join(SaveDir, NameI)
 
         NameF = ClassName + '_{}.txt'.format(cnt)
         Savepath2 = os.path.join(SaveDir, NameF)
 
+
     return NameF,Savepath,NameI,Savepath2
 
 #path ="/home/ubuntu/bit/Yolo_mark/x64/Release/data/img/air1"
-FileDir = '/home/ubuntu/bit/Yolo_mark/x64/Release/data/img2'
-SaveDir = '/home/ubuntu/bit/Yolo_mark/x64/Release/data/img'
+FileDir = '/home/mini/study/Yolo_mark/x64/Release/data/img2'
+SaveDir = '/home/mini/study/Yolo_mark/x64/Release/data/img'
 FileList = os.listdir(FileDir)
 # 확장자가 jpg인 파일이름들만 가지고 온
 JpgFile=[file for file in FileList if file.endswith('.jpg')]
@@ -224,20 +241,9 @@ if __name__ =='__main__':
             k += 1
 
 
-
-
+    #
+    #
     # cv2.imshow('Img', RoteImg)
     # cv2.waitKey()
     # cv2.destroyAllWindows()
-
-
-
-
-
-
-
-
-
-
-
 

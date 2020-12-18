@@ -20,6 +20,8 @@ def yoloFormattocv(x1, y1, x2, y2, H, W):
     return [int(v) for v in voc]
 
 def cvFormattoYolo(corner, H, W):
+    if corner == []:
+        return -1
     bbox_W = corner[3] - corner[1]
     bbox_H = corner[4] - corner[2]
 
@@ -130,7 +132,8 @@ class yoloRotatebbox:
                 new_bbox.append([int(bbox[0]), new_upper_left_corner[0], new_upper_left_corner[1],
                                  new_lower_right_corner[0], new_lower_right_corner[1]])
 
-
+        if new_bbox == []: #######################
+            new_bbox.append([])
         return new_bbox
 
 def SaveFileName(cnt):
@@ -173,7 +176,7 @@ def SaveFileName(cnt):
     return NameF,Savepath,NameI,Savepath2
 
 #path ="/home/ubuntu/bit/Yolo_mark/x64/Release/data/img/air1"
-FileDir = '/home/mini/study/Yolo_mark/x64/Release/data/img2'
+FileDir = '/home/mini/study/Yolo_mark/x64/Release/data/milk'
 SaveDir = '/home/mini/study/Yolo_mark/x64/Release/data/img'
 FileList = os.listdir(FileDir)
 # 확장자가 jpg인 파일이름들만 가지고 온
@@ -231,9 +234,19 @@ if __name__ =='__main__':
                         break
 
                 cv2.imwrite(Savepath, i)
-
+                # print(idx)
+                # print(SaveTxtList[idx])
+                # print(i.shape[0])
+                # print(i.shape[1])
+                # print(Filename)
+                # print("-------------------------------")
                 with open(Savepath2, 'a') as fout:
-                    fout.writelines(' '.join(map(str, cvFormattoYolo(SaveTxtList[idx][0], i.shape[0], i.shape[1]))) + '\n')
+                    temp = cvFormattoYolo(SaveTxtList[idx][0], i.shape[0], i.shape[1])
+                    if temp == -1:
+                        print("no text file data")
+                        print(Filename)
+                        break
+                    fout.writelines(' '.join(map(str, temp)) + '\n')
                 #print(cvFormattoYolo(SaveTxtList[22][0], i.shape[0], i.shape[1]))
 
                 if not(idx == 23):
@@ -246,4 +259,15 @@ if __name__ =='__main__':
     # cv2.imshow('Img', RoteImg)
     # cv2.waitKey()
     # cv2.destroyAllWindows()
+
+
+
+
+
+
+
+
+
+
+
 

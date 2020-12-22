@@ -1,3 +1,4 @@
+import os
 
 cnt = 1
 path = '/home/mini/study/Yolo_mark/x64/Release/data/img4'

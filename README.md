@@ -32,7 +32,6 @@
 ## yolo custom data set
 
 
-
 [![](https://img.shields.io/badge/-Tech%20Blog-green)](https://blog.naver.com/kimmin2_/222173434501)
 [![](https://img.shields.io/badge/-code-red)](https://github.com/kim-mini/Image_processing/tree/main/data_set_custom)
 
